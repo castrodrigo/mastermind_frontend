@@ -2,9 +2,38 @@
 jQuery(function ($) {
 	'use strict';
   
+  var GameApi = {
+    azmastermind: {
+      endpoint: 'http://az-mastermind.herokuapp.com',
+      actions: {
+        start: '/new_game',
+        guess: function(game_key){
+          return '/guess'
+        }
+      }
+    },
+    masterhuemind: {
+      endpoint: 'http://127.0.0.1/games',
+      actions: {
+        start: '/',
+        guess: function(game_key){
+          return '/'+game_key+'/guess'
+        }
+      }
+    },
+    getApi: function(option){
+      if(option == 'masterhuemind'){
+        return this.masterhuemind;
+      }
+
+      return this.azmastermind;
+    }
+  };
+
 	var Game = {
+    api: GameApi.azmastermind,
 	  init: function () {
-      this.apiEndpoint = 'http://az-mastermind.herokuapp.com';
+      this.apiEndpoint = this.api.endpoint;
       this.themes = ['default', 'mario', 'lego', 'pokemon', 'birds'];
       this.clearGame();
       this.loadTheme(this.themes[0]);
@@ -58,7 +87,7 @@ jQuery(function ($) {
       var user = prompt("What's your name?");
       this.game_data = null;
       $.post(
-        this.apiEndpoint + '/new_game', {user: user}
+        this.apiEndpoint + this.api.actions.start, {user: user}
       ).done(function(data) {
           this.game_data = data;
           this.game_data.guess_code = [];
@@ -126,7 +155,7 @@ jQuery(function ($) {
         var code = this.game_data.guess_code.join('');
                 
         $.post(
-          this.apiEndpoint + '/guess', 
+          this.apiEndpoint + this.api.actions.guess(this.game_data.game_key), 
           { game_key: this.game_data.game_key,
             code: code }
         ).done(function(data) {
