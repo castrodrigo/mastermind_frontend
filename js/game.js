@@ -17,7 +17,7 @@ jQuery(function ($) {
       actions: {
         start: '/games',
         guess: function(game_key){
-          return '/games'+game_key+'/guess'
+          return '/games/'+game_key+'/guesses'
         }
       }
     },
