@@ -80,6 +80,10 @@ jQuery(function ($) {
     },
     
     guessCode: function(color) {
+      if(!this.game_data) {
+        return;
+      }
+      
       this.game_data.guess_code.push(color);
       if(this.game_data.guess_code.length == this.game_data.code_length) {
         var code = this.game_data.guess_code.join('');
@@ -90,8 +94,10 @@ jQuery(function ($) {
             code: code }
         ).done(function(data) {
             if($.type(data.result) === "string") {
-              if(data.solved) {
+              if(data.solved === "true") {
+                this.game_data = data;
                 this.renderGame();
+                this.game_data = null;
               }
               else {
                 this.clearGame();
