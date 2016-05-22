@@ -13,11 +13,11 @@ jQuery(function ($) {
       }
     },
     masterhuemind: {
-      endpoint: 'http://127.0.0.1/games',
+      endpoint: 'http://159.203.40.35',
       actions: {
-        start: '/',
+        start: '/games',
         guess: function(game_key){
-          return '/'+game_key+'/guess'
+          return '/games'+game_key+'/guess'
         }
       }
     },
@@ -31,7 +31,7 @@ jQuery(function ($) {
   };
 
 	var Game = {
-    api: GameApi.azmastermind,
+    api: GameApi.masterhuemind,
 	  init: function () {
       this.apiEndpoint = this.api.endpoint;
       this.themes = ['default', 'mario', 'lego', 'pokemon', 'birds'];
