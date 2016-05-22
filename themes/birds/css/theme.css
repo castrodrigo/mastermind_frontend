@@ -1,0 +1,31 @@
+.colors-list li,
+.guess-code li {
+  background-image: url(../img/icon.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.colorR {
+  background-image: url(../img/red.png) !important;
+}
+.colorG {
+  background-image: url(../img/green.png) !important;
+}
+.colorB {
+  background-image: url(../img/blue.png) !important;
+}
+.colorY {
+  background-image: url(../img/yellow.png) !important;
+}
+.colorO {
+  background-image: url(../img/orange.png) !important;
+}
+.colorP {
+  background-image: url(../img/purple.png) !important;
+}
+.colorC {
+  background-image: url(../img/cyan.png) !important;
+}
+.colorM {
+  background-image: url(../img/magenta.png) !important;
+}

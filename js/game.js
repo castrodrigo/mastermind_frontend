@@ -5,7 +5,7 @@ jQuery(function ($) {
 	var Game = {
 		init: function () {
       this.apiEndpoint = 'http://az-mastermind.herokuapp.com';
-      this.themes = ['default', 'lego', 'mario', 'pokemon'];
+      this.themes = ['default', 'mario', 'lego', 'pokemon', 'birds'];
       this.clearGame();
       this.loadTheme(this.themes[0]);
       this.renderThemes();
