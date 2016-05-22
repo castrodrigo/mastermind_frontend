@@ -87,6 +87,10 @@ h2, h3{
   padding: 40px 0;
 }
 
+.panel-start select{
+  margin-left:4px;
+}
+
 .panel .page-header {
   margin-top:0;
   border:0;

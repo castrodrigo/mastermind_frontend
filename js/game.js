@@ -31,7 +31,7 @@ jQuery(function ($) {
   };
 
 	var Game = {
-    api: GameApi.masterhuemind,
+    api: GameApi.getApi(),
 	  init: function () {
       this.apiEndpoint = this.api.endpoint;
       this.themes = ['default', 'mario', 'lego', 'pokemon', 'birds'];
@@ -41,6 +41,11 @@ jQuery(function ($) {
       this.bindEvents();
 		},
     
+		checkEndpoint: function(){
+		  Game.api = GameApi.getApi($('#api').val());
+      this.apiEndpoint = Game.api.endpoint;
+		},
+		
     loadTheme: function(theme) {
       var css_id = 'theme-style';
       $('#' + css_id).remove();
@@ -85,6 +90,7 @@ jQuery(function ($) {
     
     createGame: function() {
       var user = prompt("What's your name?");
+      this.checkEndpoint();
       this.game_data = null;
       $.post(
         this.apiEndpoint + this.api.actions.start, {user: user}
