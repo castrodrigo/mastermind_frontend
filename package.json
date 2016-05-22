@@ -1,0 +1,8 @@
+{
+  "name": "masterhuemind",
+  "version": "1.0.0",
+  "dependencies": {
+    "bootstrap": "^3.3.6",
+    "jquery": "^2.2.4"
+  }
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>MasterHueMind</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/gameboard.css" />
+    <link rel="stylesheet" href="themes/mario/css/theme.css" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div id="game-container" class="container">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="/">
+              MasterHueMind
+            </a>
+          </div>
+        </div>
+      </nav>
+      
+      <div id="start-screen" clas="text-center">
+        <button id="new-game" class="btn btn-lg btn-primary">New Game</button>
+      </div>
+      
+      <div id="game-board" class="row">
+        <div class="col-xs-12 page-header">
+          <div class="pull-right">
+            <h3>Attempts</h3>
+            <h2 id="game-attempts">0</h2>
+          </div>
+          
+          <h3>Game Themes</h3>
+          <ul id="themes"></ul>
+        </div>
+        
+        
+        
+        <div class="col-xs-12">&nbsp;</div>
+        
+        <div class="col-xs-12 col-sm-3">
+          <h2 class="text-center">Choose Colors</h2>
+          <ul class="colors-list text-center"></ul>
+        </div>
+        
+        <div class="col-xs-9 col-sm-6">
+          <h2 class="text-center">Board Game</h2>
+          <div id="guesses"></div>
+        </div>
+        
+        <div class="col-xs-3 col-sm-3">
+          <h2>&nbsp;</h2>
+          <div id="guesses-results"></div>
+        </div>
+      </div>
+    </div>
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="js/game.js"></script>
+  </body>
+</html>

@@ -1,0 +1,130 @@
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  min-width: 380px;
+}
+
+.colors-list li {
+  width: 8vw;
+  height: 8vw;
+  display: inline-block;
+  margin: 1vw;
+  list-style: none;
+  cursor: pointer;
+}
+
+.guess-code {
+  text-align: center;
+}
+
+.guess-code li {
+  list-style: none;
+  width: 2.8em;
+  height: 2.8em;
+  margin: 1px;
+  display: inline-block;
+  background-color: #999;
+}
+
+.guess-result li {
+  background-color: #CCC;
+  border: 1px solid;
+  border-radius: 50%;
+  width: 1em;
+  height: 1em;
+  display: block;
+  float: left;
+  list-style: none;
+  margin: 1px;
+}
+
+.guess-result li.exact {
+  background-color: #000;
+}
+
+.guess-result li.near {
+  background-color: #FFF;
+}
+
+.guess-result li:nth-child(5) {
+  clear: left;
+}
+
+.guess-code, 
+.guess-result {
+    float: left;
+    width: 100%;
+    height: 4em;
+}
+
+.colorR {
+  background-color: #e74c3c !important;
+}
+.colorG {
+  background-color: #2ecc71 !important;
+}
+.colorB {
+  background-color: #3498db !important;
+}
+.colorY {
+  background-color: #f1c40f !important;
+}
+.colorO {
+  background-color: #e67e22 !important;
+}
+.colorP {
+  background-color: #9b59b6 !important;
+}
+.colorC {
+  background-color: #1abc9c !important;
+}
+.colorM {
+  background-color: #de6bae !important;
+}
+
+#themes {
+  margin: 0;
+  padding: 0;
+}
+
+.theme-icon {
+  width: 4em;
+  height: 4em;
+  list-style: none;
+  display: inline-block;
+  margin-right: 10px;
+  background-color: #CCC;
+  cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .guess-code li {
+    width: 2.1em;
+    height: 2.1em;
+  }
+}
+
+@media (min-width: 768px) {
+  .colors-list li {
+    width: 6vw;
+    height: 6vw;
+  }  
+}
+
+@media (min-width: 992px) {
+  .colors-list li {
+    width: 5vw;
+    height: 5vw;
+  }
+}
+
+@media (min-width: 1840px) {
+  .colors-list li {
+    width: 4vw;
+    height: 4vw;
+  }
+}
+

@@ -1,0 +1,6 @@
+.colors-list li,
+.guess-code li {
+  background-image: url(../img/icon.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
