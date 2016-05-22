@@ -26,7 +26,7 @@ jQuery(function ($) {
         theme = this.themes[i];
         themes = '<li class="theme-icon" data-theme="' + theme + 
           '" style="background-image:url(themes/' + theme + 
-          '/img/icon.png);background-repeat:no-repeat;background-size:cover;"></li>' +
+          '/img/theme.jpg);background-repeat:no-repeat;background-size:cover;"></li>' +
           themes;
       }
       $('#themes').append(themes);
@@ -39,6 +39,7 @@ jQuery(function ($) {
         .on('click', '.colors-list > li', function() {
           var color = $(this).data('color');
           that.guessCode(color);
+          that.clearGuessButton();
         })
         .on('click', '.theme-icon', function() {
           var theme = $(this).data('theme');
@@ -61,7 +62,7 @@ jQuery(function ($) {
       ).done(function(data) {
           this.game_data = data;
           this.game_data.guess_code = [];
-          this.game_data.username = user;
+          this.game_data.username = (user)? user : 'User';
           this.startGame();
           this.renderGame();
         }.bind(this)
@@ -94,7 +95,7 @@ jQuery(function ($) {
       if(!this.game_data) {
         return;
       }
-      this.game_data.guess_code.push(color);     
+      this.game_data.guess_code.push(color);   
       if(this.game_data.guess_code.length <= this.game_data.code_length) {
         $('.guess-code:first').html(
           '<li class="checked color' + 
@@ -111,6 +112,12 @@ jQuery(function ($) {
     clearGuess: function (item) {
       item.removeClass();
       this.game_data.guess_code.pop();  
+      this.clearGuessButton();
+    },
+    
+    clearGuessButton: function(){
+      $('.guess-code:first li').attr('data-content','');
+      $('.guess-code:first li.checked:last').attr('data-content','x').css('cursor','pointer');
     },
     
     postGuess: function(){
@@ -179,7 +186,7 @@ jQuery(function ($) {
       
       $('#guesses').html(guesses);
 			$('#guesses-results').html(guesses_results);
-			$('#game-attempts').html(this.game_data.past_results.length);
+			$('#game-attempts').html((this.game_data.past_results.length <= 9)? '0' + this.game_data.past_results.length: this.game_data.past_results.length );
 		}
 	};
 

@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Audiowide);
 @import url(https://fonts.googleapis.com/css?family=Comfortaa);
+@import url(https://fonts.googleapis.com/css?family=Dosis:700);
 
 html,body{
   font-family: 'Comfortaa';
@@ -7,6 +8,14 @@ html,body{
 
 body{
   margin-bottom: 60px;
+  background: linear-gradient(
+    to bottom,
+    #f6f6f6,
+    #f6f6f6 50%,
+    #ffffff 50%,
+    #ffffff
+  );
+  background-size: 100% 2px;
 }
 
 ul {
@@ -29,8 +38,12 @@ ul {
   transition: opacity 0.3s ease-in-out;
 }
 
-.glyphicon-refresh:hover{
+.navbar-brand:hover .glyphicon-refresh,.glyphicon-refresh:hover{
   opacity:1;
+}
+
+h2, h3{
+  color:#00A0B0;
 }
 
 .navbar{
@@ -66,6 +79,33 @@ ul {
   text-align:center;
 }
 
+.panel{
+  background-color:#e7e7e7;
+}
+
+.panel-start{
+  padding: 40px 0;
+}
+
+.panel .page-header {
+  margin-top:0;
+  border:0;
+}
+
+.panel-board , .panel-start{
+  background:#fff;
+  border-top:1px solid #e7e7e7;
+  border-bottom:1px solid #e7e7e7;
+}
+
+#game-attempts{
+  font-family: 'Dosis';
+  text-align: center; 
+  font-size: 46px;
+  margin-top: 0px; 
+  letter-spacing: 2px
+}
+
 .colors-list li {
   width: 8vw;
   height: 8vw;
@@ -86,6 +126,19 @@ ul {
   margin: 1px;
   display: inline-block;
   background-color: #999;
+}
+
+.guess-code li:after {
+  content: attr(data-content);
+  float: right;
+  margin: -7px 0 0 9px;
+  padding: 0 5px 1px;
+  position: absolute;
+  cursor: pointer;
+  border-radius: 37px;
+  color: red;
+  font-size: 11px;
+  font-weight:bold;
 }
 
 .guess-result li {
@@ -163,6 +216,9 @@ ul {
   .guess-code li {
     width: 2.1em;
     height: 2.1em;
+  }
+  .text-center-sm {
+    text-align: center;
   }
 }
 

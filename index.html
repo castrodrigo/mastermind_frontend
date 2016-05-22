@@ -28,50 +28,64 @@
             <span class="glyphicon glyphicon-refresh" title="Restart the game!"></span>
           </a>
         </div>
-        <div class="navbar-nav navbar-right nav-user" id="username">Welcome <span>Rodrigo<span></div>
+        <div class="navbar-right nav-user" id="username">Welcome <span><span></div>
       </div>
     </nav>
-    <div id="game-container" class="container">
+    <div id="game-container">
       
-      <div id="start-screen" clas="text-center">
-        <p>Welcome to MasterHueMind game!</p>
-        <p>If you would like to face a real challenge for your mind, this is the right place.</p>
-        <p>MasterHueMind challenges your logic skills , observation and reasoning.</p>
-        <br>
-        <button id="new-game" class="btn btn-lg btn-primary">Start a New Game</button>
+      <div id="start-screen" class="text-center panel-start">
+        <div class="container">
+          <p>Welcome to MasterHueMind game!</p>
+          <p>If you would like to face a real challenge for your mind, this is the right place.</p>
+          <p>MasterHueMind challenges your logic skills , observation and reasoning.</p>
+          <br>
+          <button id="new-game" class="btn btn-lg btn-primary">Start a New Game</button>
+        </div>  
       </div>
       
-      <div id="game-board" class="row">
-        <div class="col-xs-12 page-header">
-          <div class="pull-right">
-            <h3>Attempts</h3>
-            <h2 id="game-attempts">0</h2>
+      <div id="game-board">
+      
+        <div class="panel">
+	        <div class="container">
+            <div class="row">
+			        <div class="col-xs-12 page-header">
+			          <div class="pull-right">
+			            <h3>Attempts</h3>
+			            <h2 id="game-attempts">0</h2>
+                </div>
+			           <h3>Choose a Theme</h3>
+			           <ul id="themes"></ul>
+			        </div>
+            </div>
+	        </div>
+        </div>    
+        
+        <div class="panel-board">
+          <div class="container">
+            <div class="row">
+              <div class="col-xs-12">&nbsp;</div>
+              
+              <div class="col-xs-12 col-sm-3">
+                <h2 class="text-center-sm">Choose Colors</h2>
+                <ul class="colors-list text-center-sm"></ul>
+              </div>
+              
+              <div class="col-xs-7 col-sm-6">
+                <h2 class="text-center">Board Game</h2>
+                <div id="guesses"></div>
+              </div>
+              
+              <div class="col-xs-3 col-sm-2">
+                <h2>&nbsp;</h2>
+                <div id="guesses-results"></div>
+              </div>
+              
+              <div class="col-xs-1 col-sm-1">
+                <h2>&nbsp;</h2>
+                <button id="guess-check" disabled class="btn btn-md btn-primary">Check!</button>
+              </div>
+            </div>
           </div>
-          
-          <h3>Game Themes</h3>
-          <ul id="themes"></ul>
-        </div>
-        
-        <div class="col-xs-12">&nbsp;</div>
-        
-        <div class="col-xs-12 col-sm-3">
-          <h2 class="text-center">Choose Colors</h2>
-          <ul class="colors-list text-center"></ul>
-        </div>
-        
-        <div class="col-xs-7 col-sm-6">
-          <h2 class="text-center">Board Game</h2>
-          <div id="guesses"></div>
-        </div>
-        
-        <div class="col-xs-3 col-sm-2">
-          <h2>&nbsp;</h2>
-          <div id="guesses-results"></div>
-        </div>
-        
-        <div class="col-xs-1 col-sm-1">
-          <h2>&nbsp;</h2>
-          <button id="guess-check" disabled class="btn btn-md btn-primary">Check!</button>
         </div>
         
       </div>
