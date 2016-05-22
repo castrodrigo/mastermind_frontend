@@ -3,7 +3,7 @@ jQuery(function ($) {
 	'use strict';
   
 	var Game = {
-		init: function () {
+	  init: function () {
       this.apiEndpoint = 'http://az-mastermind.herokuapp.com';
       this.themes = ['default', 'mario', 'lego', 'pokemon', 'birds'];
       this.clearGame();
@@ -43,8 +43,14 @@ jQuery(function ($) {
         .on('click', '.theme-icon', function() {
           var theme = $(this).data('theme');
           that.loadTheme(theme);
-        });
-        
+        })
+        .on('click', '.guess-code:first .checked:last', function() {
+          that.clearGuess($(this));
+        })
+        .on('click', '#guess-check', function() {
+          that.postGuess();
+        })
+        ;        
 		},
     
     createGame: function() {
@@ -55,6 +61,7 @@ jQuery(function ($) {
       ).done(function(data) {
           this.game_data = data;
           this.game_data.guess_code = [];
+          this.game_data.username = user;
           this.startGame();
           this.renderGame();
         }.bind(this)
@@ -77,14 +84,37 @@ jQuery(function ($) {
       
       $('#start-screen').hide();
       $('#game-board').show();
+      
+      $('#username').show();
+      $('#username span').html(this.game_data.username);
+      $('.glyphicon-refresh').show();
     },
     
     guessCode: function(color) {
       if(!this.game_data) {
         return;
       }
-      
-      this.game_data.guess_code.push(color);
+      this.game_data.guess_code.push(color);     
+      if(this.game_data.guess_code.length <= this.game_data.code_length) {
+        $('.guess-code:first').html(
+          '<li class="checked color' + 
+          this.game_data.guess_code.join('"></li><li class="checked color') + 
+          '"></li>' + 
+          '<li></li>'.repeat(this.game_data.code_length - this.game_data.guess_code.length)
+        );
+        if(this.game_data.guess_code.length == this.game_data.code_length){
+          $('#guess-check').prop("disabled", false);
+        }
+      } 
+    },
+    
+    clearGuess: function (item) {
+      item.removeClass();
+      this.game_data.guess_code.pop();  
+    },
+    
+    postGuess: function(){
+      this.game_data.guess_code = this.game_data.guess_code.slice(0,this.game_data.code_length);
       if(this.game_data.guess_code.length == this.game_data.code_length) {
         var code = this.game_data.guess_code.join('');
                 
@@ -109,21 +139,14 @@ jQuery(function ($) {
               this.game_data.guess_code = [];
               this.renderGame();
             }
+            $('#guess-check').prop("disabled", true);
           }.bind(this)
         ).fail(function(err){
             this.clearGame();
             console.log(err);
           }.bind(this)
         );
-      }
-      else {
-        $('.guess-code:first').html(
-          '<li class="color' + 
-          this.game_data.guess_code.join('"></li><li class="color') + 
-          '"></li>' + 
-          '<li></li>'.repeat(this.game_data.code_length - this.game_data.guess_code.length)
-        );
-      }
+      } 
     },
     
     clearGame: function() {
@@ -155,8 +178,8 @@ jQuery(function ($) {
       }
       
       $('#guesses').html(guesses);
-      $('#guesses-results').html(guesses_results);
-      $('#game-attempts').html(this.game_data.past_results.length);
+			$('#guesses-results').html(guesses_results);
+			$('#game-attempts').html(this.game_data.past_results.length);
 		}
 	};
 
