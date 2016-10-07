@@ -1,6 +1,8 @@
 # mastermind_frontend
 Mastermind Frontend Project
 
+Project Team: @castrodrigo @goulartfs @ecarvalho @rtancman
+
 # local setup
 ```
 1. clone project
