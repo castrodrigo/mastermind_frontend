@@ -13,7 +13,7 @@ jQuery(function ($) {
       }
     },
     masterhuemind: {
-      endpoint: 'http://159.203.40.35',
+      endpoint: 'http://localhost:8090',
       actions: {
         start: '/games',
         guess: function(game_key){
@@ -148,6 +148,9 @@ jQuery(function ($) {
       item.removeClass();
       this.game_data.guess_code.pop();  
       this.clearGuessButton();
+      if(this.game_data.guess_code.length <= this.game_data.code_length){
+        $('#guess-check').prop("disabled", true);
+      }
     },
     
     clearGuessButton: function(){
